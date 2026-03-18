@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#051826">
+  <meta name="description" content="Antariksh Sathi tracks sky events, ISRO mission watch, India stargazing spots, and space curiosity with an offline-first experience.">
+  <title>Antariksh Sathi | AS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cosmos-shell"></div>
+  <div class="orbit orbit-a"></div>
+  <div class="orbit orbit-b"></div>
+  <div class="starfield"></div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">Command Deck</p>
+          <h2>Antariksh controls</h2>
+        </div>
+        <button class="icon-btn" id="closeDrawerBtn" type="button" aria-label="Close menu">Close</button>
+      </div>
+
+      <div class="drawer-grid">
+        <section class="panel">
+          <p class="eyebrow">Theme</p>
+          <h3>Switch visual mode</h3>
+          <p class="muted">Choose between night-sky and daylight observatory themes.</p>
+          <button class="pill-btn" id="themeBtn" type="button">Toggle theme</button>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Install</p>
+          <h3>Keep it offline-ready</h3>
+          <p class="muted">Install the app so the space pack stays one tap away.</p>
+          <button class="pill-btn" id="installBtn" type="button">Install app</button>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Night Reminder</p>
+          <h3>Observation habit</h3>
+          <label class="field-label" for="reminderTime">Preferred reminder time</label>
+          <input id="reminderTime" class="text-input" type="time" value="20:30">
+          <button class="pill-btn" id="saveReminderBtn" type="button">Save reminder preference</button>
+          <p class="muted" id="reminderStatus">Saved locally on this device.</p>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Feedback</p>
+          <h3>Suggest the next feature</h3>
+          <p class="muted">Share new missions, state spots, or school-friendly science ideas.</p>
+          <a class="pill-btn link-btn" href="mailto:sangamkrishna.dev@gmail.com?subject=Antariksh%20Sathi%20Feedback">Send feedback</a>
+        </section>
+
+        <section class="panel panel-wide">
+          <p class="eyebrow">Offline Pack</p>
+          <h3>Preloaded content</h3>
+          <div id="contentPackStats" class="content-pack"></div>
+          <p class="muted">This app ships with a built-in content pack instead of a live API, so visuals appear first and the core data stays available offline.</p>
+        </section>
+
+        <section class="panel panel-wide">
+          <p class="eyebrow">Family Links</p>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="https://snakeeye-sudo.github.io/Aapka-Sathi/">Family Hub</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-block">
+          <img src="logo.svg" alt="Antariksh Sathi logo" class="brand-logo">
+          <div>
+            <p class="brand-short">AS</p>
+            <h1>Antariksh Sathi</h1>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="ghost-btn" id="headerInstallBtn" type="button">Install</button>
+          <button class="ghost-btn" id="headerThemeBtn" type="button">Theme</button>
+          <button class="primary-btn" id="openDrawerBtn" type="button">Menu</button>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-copy">
+          <a class="family-badge" href="https://snakeeye-sudo.github.io/Aapka-Sathi/">Part of Aapka-Sathi Family</a>
+          <p class="hero-kicker">India skywatching, ISRO mission watch, aur students ke liye space curiosity ek jagah.</p>
+          <p class="hero-text">No live API. No waiting screen. App ke andar hi curated space pack preload hota hai, isliye install hone ke baad bhi kaafi cheezein instantly khul jaati hain.</p>
+          <div class="status-strip" id="statusStrip"></div>
+        </div>
+
+        <aside class="hero-panel">
+          <p class="eyebrow">Tonight's Pulse</p>
+          <h2 id="nextEventTitle">Loading sky events...</h2>
+          <p class="muted" id="nextEventMeta">Preloading mission and night-sky deck.</p>
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+            <div class="hero-orbit-sat hero-orbit-sat-a"></div>
+            <div class="hero-orbit-sat hero-orbit-sat-b"></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel panel-wide">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Sky Calendar</p>
+            <h2>2026 events that matter</h2>
+          </div>
+          <div class="filter-row" id="eventFilters"></div>
+        </div>
+        <div id="eventsGrid" class="card-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">ISRO Watch</p>
+            <h2>Launches and mission watchlist</h2>
+          </div>
+        </div>
+        <div id="launchGrid" class="stack-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Student Tool</p>
+            <h2>Curiosity Lab</h2>
+          </div>
+          <button class="pill-btn" id="randomCuriosityBtn" type="button">Show me something cool</button>
+        </div>
+        <div class="filter-row" id="curiosityFilters"></div>
+        <article id="curiosityCard" class="curiosity-card"></article>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">India Stargazing</p>
+            <h2>Spots by state and UT</h2>
+          </div>
+          <label class="select-wrap">
+            <span class="sr-only">Filter state</span>
+            <select id="stateSelect"></select>
+          </label>
+        </div>
+        <div id="spotlightCard" class="spotlight-card"></div>
+        <div id="stargazingGrid" class="card-grid compact-grid"></div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Global Directory</p>
+            <h2>Major space agencies</h2>
+          </div>
+          <input id="agencySearch" class="text-input agency-search" type="search" placeholder="Search NASA, ESA, ISRO, JAXA...">
+        </div>
+        <div id="agencyGrid" class="card-grid compact-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Antariksh Sathi logo">
+        <div>
+          <p>AS</p>
+          <strong>Antariksh Sathi</strong>
+        </div>
+      </div>
+      <p class="footer-credit">Crafted and developed by <strong>Er. Sangam Krishna</strong>.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="https://snakeeye-sudo.github.io/Aapka-Sathi/">Family Hub</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="loading-shell" id="loadingShell" aria-live="polite">
+    <div class="loading-card">
+      <div class="loading-planet"></div>
+      <p class="eyebrow">Preloading space pack</p>
+      <h2 id="loadingMessage">Collecting your first orbit view...</h2>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

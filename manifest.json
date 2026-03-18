@@ -1,0 +1,18 @@
+{
+  "name": "Antariksh Sathi",
+  "short_name": "AS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#041521",
+  "theme_color": "#051826",
+  "description": "Offline-first space companion for sky events, ISRO mission watch, India stargazing spots, and student curiosity.",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
+
