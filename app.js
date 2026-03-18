@@ -52,6 +52,13 @@
       installLabel: "Install",
       installTitle: "App ko phone par rakho",
       installAction: "Install app",
+      authLabel: "Family login",
+      authTitle: "Ek hi ID, poori family",
+      authLoading: "Login status load ho raha hai...",
+      authSignIn: "Login with Google",
+      authSignOut: "Logout",
+      authSignedAs: "Signed in as",
+      authLoggedOut: "Abhi family login active nahi hai.",
       reminderLabel: "Reminder",
       reminderTitle: "Night sky yaad dilao",
       reminderField: "Preferred reminder time",
@@ -67,7 +74,7 @@
       brandTag: "Bharat ka daily sky desk",
       familyChip: "Aapka-Sathi family ka hissa",
       heroHeadline: "Aaj ka sky scene, ISRO watch aur space learning ek jagah.",
-      heroText: "App khulte hi aaj ke din ka Moon, Sun aur planetary scene dikhega. Online hone par latest official space headlines bhi refresh hoti rahengi, aur offline mode me bhi core pack ready rahega.",
+      heroText: "Aaj ka Moon, Sun, planet snapshot, ISRO watch aur useful space learning ek hi jagah milega.",
       liveDeskLabel: "Live desk",
       todaySkyLabel: "Aaj ka sky snapshot",
       moonLabel: "Chand",
@@ -152,6 +159,13 @@
       installLabel: "Install",
       installTitle: "Keep the app on your phone",
       installAction: "Install app",
+      authLabel: "Family login",
+      authTitle: "One ID, whole family",
+      authLoading: "Loading login status...",
+      authSignIn: "Login with Google",
+      authSignOut: "Logout",
+      authSignedAs: "Signed in as",
+      authLoggedOut: "No family login is active right now.",
       reminderLabel: "Reminder",
       reminderTitle: "Night sky reminder",
       reminderField: "Preferred reminder time",
@@ -167,7 +181,7 @@
       brandTag: "India's daily sky desk",
       familyChip: "Part of Aapka-Sathi family",
       heroHeadline: "Today’s sky scene, ISRO watch, and space learning in one place.",
-      heroText: "As soon as the app opens, it shows the Moon, Sun, and planetary scene for the current day. When you are online it also refreshes official space headlines, while the core pack stays ready offline.",
+      heroText: "Get today’s Moon, Sun, planet snapshot, ISRO watch, and useful space learning in one place.",
       liveDeskLabel: "Live desk",
       todaySkyLabel: "Today's sky snapshot",
       moonLabel: "Moon",
@@ -330,9 +344,20 @@
     agencyQuery: "",
     reminderTime: localStorage.getItem(STORAGE.reminder) || "20:30",
     deferredPrompt: null,
+    authUser: null,
     livePack: null,
     activeDate: new Date(),
     location: { ...DEFAULT_LOCATION }
+  };
+
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyC6Cpg83N8fBuvY7YOSwTWsfM9DUsaVc3E",
+    authDomain: "pariksha-sathi.firebaseapp.com",
+    projectId: "pariksha-sathi",
+    storageBucket: "pariksha-sathi.firebasestorage.app",
+    messagingSenderId: "921721697043",
+    appId: "1:921721697043:web:dada90a420c40e11ae60e6",
+    measurementId: "G-NC7955J7KV"
   };
 
   let midnightTimer = null;
@@ -419,6 +444,50 @@
     $("agencySearch").placeholder = t("searchPlaceholder");
     $("langHiBtn").classList.toggle("active", state.lang === "hi");
     $("langEnBtn").classList.toggle("active", state.lang === "en");
+    syncAuthUi();
+  }
+
+  function syncAuthUi() {
+    const authStateText = $("authStateText");
+    const authBtn = $("authBtn");
+    if (!authStateText || !authBtn) return;
+
+    if (state.authUser) {
+      authStateText.textContent = `${t("authSignedAs")} ${state.authUser.displayName || state.authUser.email}`;
+      authBtn.textContent = t("authSignOut");
+    } else {
+      authStateText.textContent = t("authLoggedOut");
+      authBtn.textContent = t("authSignIn");
+    }
+  }
+
+  async function initFamilyAuth() {
+    try {
+      const firebaseApp = await import("https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js");
+      const firebaseAuth = await import("https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js");
+      const app = firebaseApp.initializeApp(FIREBASE_CONFIG, "antariksh-sathi-family-auth");
+      const auth = firebaseAuth.getAuth(app);
+      const provider = new firebaseAuth.GoogleAuthProvider();
+      const authBtn = $("authBtn");
+
+      if (authBtn) {
+        authBtn.addEventListener("click", async () => {
+          if (state.authUser) {
+            await firebaseAuth.signOut(auth);
+          } else {
+            await firebaseAuth.signInWithPopup(auth, provider);
+          }
+        });
+      }
+
+      firebaseAuth.onAuthStateChanged(auth, (user) => {
+        state.authUser = user;
+        syncAuthUi();
+      });
+    } catch (error) {
+      console.error("Family auth unavailable", error);
+      syncAuthUi();
+    }
   }
 
   function formatDate(date, options) {
@@ -1052,6 +1121,7 @@
     startLoadingLoop();
     bindEvents();
     renderAll();
+    await initFamilyAuth();
     await fetchLivePack(true);
     maybeSendReminder();
     scheduleMidnightRefresh();
