@@ -13,11 +13,16 @@
   const STORAGE = {
     lang: "as-lang",
     theme: "as-theme",
+    familyTheme: "sathi-family-theme",
+    familyThemeMode: "sathi-family-theme-mode",
     reminder: "as-reminder",
     notifEnabled: "as-notif-enabled",
     notifLastShown: "as-notif-last-shown",
-    liveFetched: "as-live-last-fetched"
+    liveFetched: "as-live-last-fetched",
+    installMarker: "sathi-installed-antariksh-sathi"
   };
+
+  const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
   const DEFAULT_LOCATION = {
     labelHi: "Bharat default estimate",
@@ -366,10 +371,27 @@
     return String(value ?? "");
   }
 
-  function setTheme(theme) {
-    state.theme = theme;
-    document.body.dataset.theme = theme;
-    localStorage.setItem(STORAGE.theme, theme);
+  function getThemePreference() {
+    return localStorage.getItem(STORAGE.familyThemeMode) || localStorage.getItem(STORAGE.familyTheme) || localStorage.getItem(STORAGE.theme) || "system";
+  }
+
+  function resolveTheme(themePreference) {
+    if (themePreference === "night" || themePreference === "dawn") return themePreference;
+    const baseTheme = themePreference === "system"
+      ? (systemThemeQuery.matches ? "dark" : "light")
+      : themePreference;
+    return baseTheme === "light" ? "dawn" : "night";
+  }
+
+  function setTheme(themePreference, persist = true) {
+    const resolvedTheme = resolveTheme(themePreference);
+    state.theme = resolvedTheme;
+    document.body.dataset.theme = resolvedTheme;
+    if (persist) {
+      localStorage.setItem(STORAGE.theme, resolvedTheme);
+      localStorage.setItem(STORAGE.familyTheme, resolvedTheme === "dawn" ? "light" : "dark");
+      localStorage.setItem(STORAGE.familyThemeMode, resolvedTheme === "dawn" ? "light" : "dark");
+    }
   }
 
   function toggleTheme() {
@@ -969,6 +991,10 @@
       state.deferredPrompt = event;
     });
 
+    window.addEventListener("appinstalled", () => {
+      localStorage.setItem(STORAGE.installMarker, "true");
+    });
+
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./sw.js").catch(() => {});
@@ -1007,7 +1033,22 @@
 
   document.addEventListener("DOMContentLoaded", async () => {
     document.documentElement.lang = state.lang === "hi" ? "hi" : "en";
-    setTheme(state.theme);
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      localStorage.setItem(STORAGE.installMarker, "true");
+    }
+    if (typeof systemThemeQuery.addEventListener === "function") {
+      systemThemeQuery.addEventListener("change", () => {
+        if ((localStorage.getItem(STORAGE.familyThemeMode) || "system") === "system") {
+          setTheme("system", false);
+        }
+      });
+    }
+    window.addEventListener("storage", (event) => {
+      if (event.key === STORAGE.familyTheme || event.key === STORAGE.familyThemeMode) {
+        setTheme(getThemePreference(), false);
+      }
+    });
+    setTheme(getThemePreference(), false);
     startLoadingLoop();
     bindEvents();
     renderAll();
