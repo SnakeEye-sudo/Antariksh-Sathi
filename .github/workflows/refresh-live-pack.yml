@@ -1,0 +1,32 @@
+name: Refresh Live Pack
+
+on:
+  schedule:
+    - cron: "35 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build live pack
+        run: python scripts/build_live_pack.py
+
+      - name: Commit refreshed pack
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add live-pack.json
+          git diff --cached --quiet || git commit -m "chore: refresh Antariksh live pack"
+          git push

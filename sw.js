@@ -1,10 +1,11 @@
-const CACHE = "antariksh-sathi-v1";
+const CACHE = "antariksh-sathi-v2";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./data.js",
   "./app.js",
+  "./live-pack.json",
   "./manifest.json",
   "./logo.svg",
   "./favicon.svg",
@@ -28,6 +29,23 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
-});
+  const url = new URL(event.request.url);
+  const isLivePack = url.pathname.endsWith("/live-pack.json") || url.pathname.endsWith("live-pack.json");
 
+  if (isLivePack) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const cloned = response.clone();
+          caches.open(CACHE).then((cache) => cache.put("./live-pack.json", cloned));
+          return response;
+        })
+        .catch(() => caches.match("./live-pack.json"))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then((cached) => cached || fetch(event.request))
+  );
+});
