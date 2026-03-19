@@ -8,10 +8,11 @@
   "description": "Hindi-first space companion for daily sky visuals, ISRO watch, India stargazing spots, and student curiosity.",
   "icons": [
     {
-      "src": "logo.svg",
+      "src": "logo.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     }
   ]
 }
+
