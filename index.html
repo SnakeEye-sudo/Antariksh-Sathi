@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06121b">
+  <meta name="description" content="Antariksh Sathi Bharat ke liye daily sky snapshot, ISRO watch, meteor shower calendar, stargazing spots aur space curiosity ko ek jagah laata hai.">
+  <title>Antariksh Sathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Icon refresh: 2026-03-19 -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="night">
+  <div class="sky-backdrop">
+    <div class="sky-glow glow-a"></div>
+    <div class="sky-glow glow-b"></div>
+    <div class="sky-grid"></div>
+    <div class="sky-stars"></div>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <div class="drawer-head">
+        <div>
+          <p class="eyebrow" data-i18n="menuLabel">Quick Controls</p>
+          <h2 data-i18n="menuTitle">Antariksh menu</h2>
+        </div>
+        <button class="icon-btn" id="closeDrawerBtn" type="button" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="drawer-grid">
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="languageLabel">Language</p>
+          <h3 data-i18n="languageTitle">Hindi aur English</h3>
+          <div class="toggle-row" role="group" aria-label="Language">
+            <button class="mini-toggle" id="langHiBtn" type="button">हिन्दी</button>
+            <button class="mini-toggle" id="langEnBtn" type="button">English</button>
+          </div>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="themeLabel">Theme</p>
+          <h3 data-i18n="themeTitle">Alive sky mode</h3>
+          <button class="menu-btn" id="themeBtn" type="button" data-i18n="themeAction">Theme badlo</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="installLabel">Install</p>
+          <h3 data-i18n="installTitle">App ko phone par rakho</h3>
+          <button class="menu-btn" id="installBtn" type="button" data-i18n="installAction">Install app</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="authLabel">Family login</p>
+          <h3 data-i18n="authTitle">Ek hi ID, poori family</h3>
+          <p class="muted small-copy" id="authStateText" data-i18n="authLoading">Login status load ho raha hai...</p>
+          <button class="menu-btn" id="authBtn" type="button" data-i18n="authSignIn">Login with Google</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="reminderLabel">Reminder</p>
+          <h3 data-i18n="reminderTitle">Night sky yaad dilao</h3>
+          <label class="field-label" for="reminderTime" data-i18n="reminderField">Preferred reminder time</label>
+          <input id="reminderTime" class="text-input" type="time" value="20:30">
+          <button class="menu-btn" id="saveReminderBtn" type="button" data-i18n="reminderSave">Save reminder</button>
+          <p class="muted small-copy" id="reminderStatus"></p>
+        </section>
+
+        <section class="menu-panel menu-panel-wide">
+          <p class="eyebrow" data-i18n="pagesLabel">Pages</p>
+          <h3 data-i18n="pagesTitle">Family links aur info</h3>
+          <div class="menu-links">
+            <a href="about.html" data-i18n="pageAbout">About</a>
+            <a href="resources.html" data-i18n="pageResources">Resources</a>
+            <a href="contact.html" data-i18n="pageContact">Contact</a>
+            <a href="privacy-policy.html" data-i18n="pagePrivacy">Privacy Policy</a>
+            <a href="terms.html" data-i18n="pageTerms">Terms &amp; Conditions</a>
+            <a href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="pageFamily">Aapka-Sathi Family</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </aside>
+
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-wrap">
+          <img src="logo.png" alt="Antariksh Sathi logo" class="brand-logo">
+          <div>
+            <p class="hero-tag" data-i18n="brandTag">Bharat ka daily sky desk</p>
+            <h1>Antariksh Sathi</h1>
+          </div>
+        </div>
+        <button class="hamburger-btn" id="openDrawerBtn" type="button" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <a class="family-chip" href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="familyChip">Aapka-Sathi family ka hissa</a>
+          <h2 class="hero-headline" data-i18n="heroHeadline">Aaj ka sky scene, ISRO watch aur space learning ek jagah.</h2>
+          <p class="hero-text" data-i18n="heroText">
+            App khulte hi aaj ke din ka Moon, Sun aur planetary scene dikhega. Online hone par latest official space headlines bhi refresh hoti rahengi, aur offline mode me bhi core pack ready rahega.
+          </p>
+
+          <div class="hero-badges" id="statusStrip"></div>
+
+          <div class="live-feed-box">
+            <div class="live-feed-head">
+              <p class="eyebrow" data-i18n="liveDeskLabel">Live desk</p>
+              <span class="muted" id="liveFeedUpdated"></span>
+            </div>
+            <div id="liveFeedList" class="live-feed-list"></div>
+          </div>
+        </section>
+
+        <section class="hero-sky">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow" data-i18n="todaySkyLabel">Aaj ka sky snapshot</p>
+              <h2 id="todaySkyTitle">Loading...</h2>
+            </div>
+            <p class="muted" id="todaySkyMeta"></p>
+          </div>
+
+          <div class="sky-mini-grid">
+            <article class="sky-mini-card">
+              <div class="moon-visual" id="moonVisual">
+                <div class="moon-core"></div>
+                <div class="moon-shadow" id="moonShadow"></div>
+              </div>
+              <div>
+                <p class="mini-label" data-i18n="moonLabel">Moon</p>
+                <h3 id="moonTitle">-</h3>
+                <p class="muted" id="moonMeta"></p>
+              </div>
+            </article>
+
+            <article class="sky-mini-card">
+              <div class="sun-visual">
+                <div class="sun-arc"></div>
+                <div class="sun-dot" id="sunDot"></div>
+              </div>
+              <div>
+                <p class="mini-label" data-i18n="sunLabel">Sun</p>
+                <h3 id="sunTitle">-</h3>
+                <p class="muted" id="sunMeta"></p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="planetLabel">Planet board</p>
+            <h2 data-i18n="planetTitle">Aaj ki planetary positioning</h2>
+          </div>
+          <p class="muted" data-i18n="planetNote">Yeh ek educational orbit view hai jo date ke saath daily update hota hai.</p>
+        </div>
+        <div class="planet-layout">
+          <div class="planet-board" id="planetBoard">
+            <div class="sun-core"></div>
+          </div>
+          <div class="planet-legend" id="planetLegend"></div>
+        </div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="eventLabel">Sky calendar</p>
+            <h2 data-i18n="eventTitle">Agla important sky event</h2>
+          </div>
+          <div class="filter-row" id="eventFilters"></div>
+        </div>
+        <article class="event-spotlight" id="eventSpotlight"></article>
+        <div class="card-grid" id="eventsGrid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="launchLabel">ISRO watch</p>
+            <h2 data-i18n="launchTitle">Missions aur programme pulse</h2>
+          </div>
+        </div>
+        <div class="stack-grid" id="launchGrid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="curiosityLabel">Student lab</p>
+            <h2 data-i18n="curiosityTitle">Space curiosity tool</h2>
+          </div>
+          <button class="menu-btn subtle-btn" id="randomCuriosityBtn" type="button" data-i18n="curiosityButton">Kuch naya dikhao</button>
+        </div>
+        <div class="filter-row" id="curiosityFilters"></div>
+        <article class="curiosity-card" id="curiosityCard"></article>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="stargazeLabel">India spots</p>
+            <h2 data-i18n="stargazeTitle">Rajya ke hisaab se stargazing spots</h2>
+          </div>
+          <label class="select-wrap">
+            <span class="sr-only">Select state</span>
+            <select id="stateSelect"></select>
+          </label>
+        </div>
+        <div class="spotlight-card" id="spotlightCard"></div>
+        <div class="card-grid compact-grid" id="stargazingGrid"></div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="agencyLabel">World agencies</p>
+            <h2 data-i18n="agencyTitle">Major space agencies directory</h2>
+          </div>
+          <input id="agencySearch" class="text-input agency-search" type="search" placeholder="ISRO, NASA, ESA..." aria-label="Search space agencies">
+        </div>
+        <div class="card-grid compact-grid" id="agencyGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Antariksh Sathi logo">
+        <div>
+          <strong>Antariksh Sathi</strong>
+          <p data-i18n="footerNote">Daily sky aur space curiosity ko simple banane ke liye.</p>
+        </div>
+      </div>
+      <p class="footer-credit">Crafted and developed by <strong>Er. Sangam Krishna</strong>.</p>
+    </footer>
+  </div>
+
+  <div class="loading-shell" id="loadingShell" aria-live="polite">
+    <div class="loading-card">
+      <div class="loader-ring"></div>
+      <p class="eyebrow" data-i18n="loadingLabel">Space pack</p>
+      <h2 id="loadingMessage">Orbit align ho raha hai...</h2>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script defer src="notification-prompt.js"></script>
+  <script defer src="sathi-navigator.js"></script>
+</body>
+</html>
+
+

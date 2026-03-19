@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Antariksh Sathi favicon">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#071522"/>
+      <stop offset="100%" stop-color="#0f3041"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" x2="100%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#5ce2ff"/>
+      <stop offset="100%" stop-color="#7af2b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <circle cx="64" cy="64" r="22" fill="#f5ae2b"/>
+  <path d="M22 66c11-12 26-19 42-19s31 7 42 19" fill="none" stroke="url(#ring)" stroke-linecap="round" stroke-width="6"/>
+  <path d="M20 78c12 10 28 16 44 16s32-6 44-16" fill="none" stroke="url(#ring)" stroke-linecap="round" stroke-width="6"/>
+  <circle cx="94" cy="46" r="5" fill="#5ce2ff"/>
+</svg>

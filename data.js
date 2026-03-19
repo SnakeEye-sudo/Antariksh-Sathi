@@ -1,0 +1,263 @@
+window.ANTARIKSH_DATA = {
+  meta: {
+    lastUpdated: "2026-03-19",
+    packName: "Antariksh Pack 1.0",
+    sources: [
+      "ISRO mission pages and programme updates",
+      "NASA Science skywatching and eclipse material",
+      "American Meteor Society 2026 meteor shower list",
+      "International Meteor Organization 2026 calendar"
+    ]
+  },
+  events: [
+    {
+      id: "lunar-eclipse-mar",
+      type: "eclipse",
+      title: "Total Lunar Eclipse",
+      dateLabel: "March 3, 2026",
+      indiaView: "India visibility: partial to strong depending on location and moonset timing.",
+      bestTime: "Pre-dawn hours",
+      summary: "A red Moon event worth checking with local moonrise and moonset timing before the night.",
+      source: "NASA / timeanddate",
+      spotlight: true
+    },
+    {
+      id: "venus-saturn",
+      type: "planetary",
+      title: "Venus + Saturn close pairing",
+      dateLabel: "March 8, 2026",
+      indiaView: "Visible low in the sky around dawn if your horizon is clear.",
+      bestTime: "Early dawn",
+      summary: "A simple naked-eye conjunction that feels dramatic even from city rooftops.",
+      source: "NASA What's Up"
+    },
+    {
+      id: "march-equinox",
+      type: "season",
+      title: "March Equinox",
+      dateLabel: "March 20, 2026",
+      indiaView: "Useful marker for changing evening skies across India.",
+      bestTime: "Whole week around the equinox",
+      summary: "A seasonal reset point for skywatching, photography, and classroom demos.",
+      source: "NASA / timeanddate"
+    },
+    {
+      id: "lyrids",
+      type: "meteor",
+      title: "Lyrid Meteor Shower",
+      dateLabel: "Peak: April 22, 2026",
+      indiaView: "Best from darker skies after midnight.",
+      bestTime: "Late night to dawn",
+      summary: "One of the oldest recorded meteor showers, with a clean April viewing window.",
+      source: "AMS / timeanddate"
+    },
+    {
+      id: "eta-aquarids",
+      type: "meteor",
+      title: "Eta Aquariids",
+      dateLabel: "Peak: May 5, 2026",
+      indiaView: "Good for early risers, especially from the south and west of India.",
+      bestTime: "Pre-dawn",
+      summary: "Fast meteors tied to Halley's Comet, best seen before sunrise.",
+      source: "AMS / IMO"
+    },
+    {
+      id: "southern-delta-aquariids",
+      type: "meteor",
+      title: "Southern Delta Aquariids",
+      dateLabel: "Peak: July 30, 2026",
+      indiaView: "Works best from dark locations with a broad southern horizon.",
+      bestTime: "After midnight",
+      summary: "A softer but steady shower that pairs well with monsoon-break travel in dry regions.",
+      source: "AMS / NASA forecast"
+    },
+    {
+      id: "perseids",
+      type: "meteor",
+      title: "Perseid Meteor Shower",
+      dateLabel: "Peak: August 13, 2026",
+      indiaView: "One of the easiest major showers to enjoy if skies are clear.",
+      bestTime: "Late night to dawn",
+      summary: "Usually the most popular shower of the year and strong enough for beginners.",
+      source: "AMS / NASA forecast"
+    },
+    {
+      id: "solar-eclipse-aug",
+      type: "eclipse",
+      title: "Total Solar Eclipse elsewhere",
+      dateLabel: "August 12, 2026",
+      indiaView: "Not a headline India eclipse, but worth following for global space classrooms.",
+      bestTime: "Remote viewing",
+      summary: "A strong teaching moment for eclipse geometry even if you watch via streams.",
+      source: "NASA Future Eclipses"
+    },
+    {
+      id: "orionids",
+      type: "meteor",
+      title: "Orionid Meteor Shower",
+      dateLabel: "Peak: October 23, 2026",
+      indiaView: "Comfortable post-monsoon skies make this shower feel rewarding.",
+      bestTime: "Midnight to dawn",
+      summary: "Another Halley's Comet shower, usually sharp and fast-moving.",
+      source: "AMS / IMO"
+    },
+    {
+      id: "leonids",
+      type: "meteor",
+      title: "Leonid Meteor Shower",
+      dateLabel: "Peak: November 18, 2026",
+      indiaView: "Good moon conditions make this one worth watching in India.",
+      bestTime: "Late night",
+      summary: "Fast meteors with a famous storm history, even when current years are calmer.",
+      source: "AMS / IMO"
+    },
+    {
+      id: "geminids",
+      type: "meteor",
+      title: "Geminid Meteor Shower",
+      dateLabel: "Peak: December 14, 2026",
+      indiaView: "One of the strongest and most beginner-friendly showers of the year.",
+      bestTime: "Night through dawn",
+      summary: "Bright, reliable meteors and usually the easiest December sky event to recommend.",
+      source: "AMS / NASA forecast"
+    },
+    {
+      id: "ursids",
+      type: "meteor",
+      title: "Ursid Meteor Shower",
+      dateLabel: "Peak: December 22, 2026",
+      indiaView: "Mostly for dedicated observers due to lower rates and moon interference.",
+      bestTime: "Late night",
+      summary: "A smaller winter shower that still rewards patient observers with dark skies.",
+      source: "AMS / NASA forecast"
+    }
+  ],
+  launches: [
+    {
+      mission: "Gaganyaan G1",
+      agency: "ISRO",
+      window: "Watch official ISRO update",
+      status: "Watch",
+      summary: "ISRO said the HLVM3-G1 / OM-1 launch campaign started in December 2024 for the first uncrewed Gaganyaan flight.",
+      note: "Treat this as a watchlist entry because flight windows can shift.",
+      source: "ISRO"
+    },
+    {
+      mission: "Gaganyaan crewed mission",
+      agency: "ISRO",
+      window: "After uncrewed validation flights",
+      status: "Roadmap",
+      summary: "Crewed flight readiness depends on the full chain of human-rating, abort, and uncrewed mission validation.",
+      note: "Best followed as a programme milestone, not as a fixed public date.",
+      source: "ISRO"
+    },
+    {
+      mission: "Aditya-L1 science operations",
+      agency: "ISRO",
+      window: "Active now",
+      status: "Operational",
+      summary: "India's solar observatory is operating from halo orbit around L1 and releasing science data.",
+      note: "Great live mission to explore in classrooms while waiting for the next big launch.",
+      source: "ISRO"
+    },
+    {
+      mission: "Venus Orbiter Mission",
+      agency: "ISRO",
+      window: "Target 2028",
+      status: "Planned",
+      summary: "ISRO's 2025 national science meet described VOM as a science mission slated for 2028.",
+      note: "Useful for students who want to follow future Indian planetary science.",
+      source: "ISRO"
+    },
+    {
+      mission: "Chandrayaan legacy track",
+      agency: "ISRO",
+      window: "Explore now",
+      status: "Study",
+      summary: "Chandrayaan and lunar mission stories remain the best starting point for student curiosity and India-specific space learning.",
+      note: "Good gateway before following new mission windows.",
+      source: "ISRO"
+    }
+  ],
+  stargazing: [
+    { state: "Andhra Pradesh", location: "Lambasingi / Araku highlands", bestMonths: "Nov-Feb", why: "Cool hill air and wider skies make it a strong beginner pick.", note: "Go on a moonless night for the best contrast." },
+    { state: "Arunachal Pradesh", location: "Mechuka valley", bestMonths: "Oct-Mar", why: "Sparse lights and mountain horizons create a dramatic sky dome.", note: "Weather changes fast, so keep an extra night buffer." },
+    { state: "Assam", location: "Haflong outskirts", bestMonths: "Nov-Feb", why: "Lower light pollution than the plains and good horizon openings.", note: "Avoid bright festival dates if you want darker local skies." },
+    { state: "Bihar", location: "Valmiki forest edge", bestMonths: "Nov-Feb", why: "Dark forest-side stretches help once you move well away from town lights.", note: "Travel with local guidance and finish setup before late night." },
+    { state: "Chhattisgarh", location: "Mainpat plateau", bestMonths: "Nov-Feb", why: "A quiet plateau feel with cleaner horizons than nearby cities.", note: "Winter clarity helps more than the warmer months." },
+    { state: "Goa", location: "Cotigao and southern dark beaches", bestMonths: "Nov-Feb", why: "Sea horizon plus darker southern belts make short sky trips easy.", note: "Humidity can soften contrast, so drier nights work better." },
+    { state: "Gujarat", location: "Dhordo / White Rann", bestMonths: "Nov-Feb", why: "Flat desert horizons are excellent for wide-angle meteor watching.", note: "Wind can be sharp, so carry layers even in dry season." },
+    { state: "Haryana", location: "Morni Hills", bestMonths: "Oct-Feb", why: "One of the easiest dark-sky escapes from the Chandigarh belt.", note: "Reach before sunset and avoid brighter picnic zones." },
+    { state: "Himachal Pradesh", location: "Langza and Kaza, Spiti", bestMonths: "May-Oct", why: "Thin air and high altitude deliver some of the best naked-eye skies in India.", note: "Acclimatization matters more here than gear." },
+    { state: "Jharkhand", location: "Netarhat", bestMonths: "Nov-Feb", why: "Plateau darkness and quieter roads help city viewers reset quickly.", note: "Moonless winter nights are the safest recommendation." },
+    { state: "Karnataka", location: "Hampi outskirts", bestMonths: "Nov-Feb", why: "Rocky open terrain gives clean horizons and a dramatic landscape silhouette.", note: "Stay outside the brighter core tourist zone." },
+    { state: "Kerala", location: "Vagamon high meadows", bestMonths: "Dec-Feb", why: "High meadows and reduced haze in winter make this a comfortable family choice.", note: "Clouds build quickly outside the drier season." },
+    { state: "Madhya Pradesh", location: "Pachmarhi plateau", bestMonths: "Nov-Feb", why: "Forest buffers and elevation give a calmer dark-sky experience.", note: "A simple reclining chair matters more than complex gear here." },
+    { state: "Maharashtra", location: "Bhandardara", bestMonths: "Nov-Feb", why: "Popular with astrophotographers because it is reachable and still fairly dark.", note: "Weekdays are usually quieter than weekends." },
+    { state: "Manipur", location: "Shirui slopes", bestMonths: "Oct-Feb", why: "Open ridgelines help with wide-field sky scans and meteor watching.", note: "Use local weather before committing because fog can roll in." },
+    { state: "Meghalaya", location: "Shnongpdeng / Dawki belt", bestMonths: "Nov-Feb", why: "Dry-season skies and open river valleys create memorable night scenes.", note: "Keep lighting low around campsites if you want your eyes to adapt." },
+    { state: "Mizoram", location: "Phawngpui region", bestMonths: "Nov-Feb", why: "High ridges and low stray light suit patient observers.", note: "Best for slow, quiet observing rather than quick stopovers." },
+    { state: "Nagaland", location: "Dzukou valley rim", bestMonths: "Oct-Feb", why: "Highland darkness and broad ridges make meteor nights feel cinematic.", note: "Trek timing and local access rules matter." },
+    { state: "Odisha", location: "Daringbadi", bestMonths: "Nov-Feb", why: "An easier cool-weather option for eastern India sky trips.", note: "Choose nights with low mist risk." },
+    { state: "Punjab", location: "Foothills near Anandpur Sahib", bestMonths: "Oct-Feb", why: "Foothill edges work better than bright central plains for casual skywatching.", note: "You will still want distance from highways and towns." },
+    { state: "Rajasthan", location: "Sam dunes / Jaisalmer outskirts", bestMonths: "Oct-Feb", why: "Desert dryness and open horizons are perfect for meteor shower nights.", note: "Stay away from bright camp lighting if you want the real sky." },
+    { state: "Sikkim", location: "Lachen side valleys", bestMonths: "Oct-Dec", why: "High altitude and low light density create crisp star fields.", note: "Mountain weather can close in fast, so stay flexible." },
+    { state: "Tamil Nadu", location: "Upper Palani and Kodaikanal hills", bestMonths: "Dec-Feb", why: "Cool-season hill skies are easier to enjoy than humid lowland nights.", note: "Avoid brighter town cores and head for darker ridges." },
+    { state: "Telangana", location: "Ananthagiri Hills", bestMonths: "Nov-Feb", why: "A manageable dark-sky break for Hyderabad-side observers.", note: "Go on moonless weekdays if you want less local glare." },
+    { state: "Tripura", location: "Jampui Hills", bestMonths: "Nov-Feb", why: "Elevated viewpoints help above lower haze and town glow.", note: "Pick open ridges with a safe, stable setup spot." },
+    { state: "Uttar Pradesh", location: "Dudhwa buffer zone", bestMonths: "Nov-Feb", why: "Forest-side darkness works much better than the state's urban belts.", note: "Go only with safe access planning and local permissions where needed." },
+    { state: "Uttarakhand", location: "Chopta / Auli belt", bestMonths: "Oct-Dec", why: "Mountain horizons and cold, cleaner air can look spectacular.", note: "Carry warm layers and plan for rapid temperature drops." },
+    { state: "West Bengal", location: "Sandakphu ridge", bestMonths: "Oct-Dec", why: "A high ridge experience with panoramic night-sky potential.", note: "Cloud cover decides everything, so keep expectations flexible." },
+    { state: "Andaman and Nicobar Islands", location: "Neil Island beaches", bestMonths: "Dec-Mar", why: "Island horizons are fantastic for low-angle celestial events.", note: "Salt air and humidity can affect lenses but not naked-eye joy." },
+    { state: "Chandigarh", location: "Kaimbwala side outskirts", bestMonths: "Oct-Feb", why: "A practical short escape when you cannot do a long mountain trip.", note: "Move away from traffic-facing areas for darker conditions." },
+    { state: "Dadra and Nagar Haveli and Daman and Diu", location: "Diu coast", bestMonths: "Nov-Feb", why: "Open sea horizon gives easy beginner-friendly night-sky framing.", note: "Sea breeze is pleasant, but moisture can rise later in the night." },
+    { state: "Delhi", location: "Asola Bhatti edge zones", bestMonths: "Oct-Feb", why: "Not truly dark, but still useful for moon, planets, and basic conjunction watching.", note: "For meteors, Delhi viewers should ideally travel farther out." },
+    { state: "Jammu and Kashmir", location: "Gurez / Sonamarg dark stretches", bestMonths: "Oct-Nov", why: "High valleys offer cleaner skies once tourist glare drops away.", note: "Road and weather windows decide feasibility." },
+    { state: "Ladakh", location: "Hanle Dark Sky Reserve", bestMonths: "May-Sep", why: "India's flagship dark-sky destination and the easiest national icon to recommend.", note: "Altitude is serious here, so slow travel beats rushed travel." },
+    { state: "Lakshadweep", location: "Agatti outer beaches", bestMonths: "Dec-Mar", why: "Dark sea horizons make constellations and low planets look unusually clean.", note: "Humidity can be high, but visual observing still feels magical." },
+    { state: "Puducherry", location: "Quiet Karaikal coast stretches", bestMonths: "Dec-Feb", why: "Coastal observing works well when you move away from bright beachfront lights.", note: "Go for moon and conjunction viewing more than deep-sky detail." }
+  ],
+  agencies: [
+    { code: "ISRO", name: "Indian Space Research Organisation", country: "India", focus: "Launches, space science, navigation, Earth observation", website: "https://www.isro.gov.in/" },
+    { code: "NASA", name: "National Aeronautics and Space Administration", country: "United States", focus: "Human spaceflight, science, planetary exploration", website: "https://www.nasa.gov/" },
+    { code: "ESA", name: "European Space Agency", country: "Europe", focus: "Multinational science, launch, Earth observation", website: "https://www.esa.int/" },
+    { code: "JAXA", name: "Japan Aerospace Exploration Agency", country: "Japan", focus: "Launch vehicles, lunar and science missions", website: "https://global.jaxa.jp/" },
+    { code: "CNSA", name: "China National Space Administration", country: "China", focus: "Human spaceflight, lunar and planetary exploration", website: "http://www.cnsa.gov.cn/" },
+    { code: "Roscosmos", name: "Roscosmos", country: "Russia", focus: "Launch systems, human spaceflight, station operations", website: "https://www.roscosmos.ru/" },
+    { code: "CSA", name: "Canadian Space Agency", country: "Canada", focus: "Robotics, science, deep-space collaboration", website: "https://www.asc-csa.gc.ca/" },
+    { code: "CNES", name: "Centre National d'Etudes Spatiales", country: "France", focus: "National missions, launch support, science", website: "https://cnes.fr/" },
+    { code: "DLR", name: "German Aerospace Center", country: "Germany", focus: "Space research, aviation, robotics, Earth systems", website: "https://www.dlr.de/" },
+    { code: "ASI", name: "Italian Space Agency", country: "Italy", focus: "Science, Earth observation, ESA partnerships", website: "https://www.asi.it/" },
+    { code: "UKSA", name: "UK Space Agency", country: "United Kingdom", focus: "National strategy, satellites, research", website: "https://www.gov.uk/government/organisations/uk-space-agency" },
+    { code: "KARI", name: "Korea Aerospace Research Institute", country: "South Korea", focus: "Launch vehicles, lunar work, satellites", website: "https://www.kari.re.kr/" },
+    { code: "UAESA", name: "UAE Space Agency", country: "United Arab Emirates", focus: "Mars, astronautics, national space economy", website: "https://uaesa.gov.ae/" },
+    { code: "ISA", name: "Israel Space Agency", country: "Israel", focus: "Small satellites, science, strategic missions", website: "https://www.gov.il/en/departments/israel_space_agency" },
+    { code: "ASA", name: "Australian Space Agency", country: "Australia", focus: "National coordination, launch ecosystem, civil space", website: "https://www.space.gov.au/" },
+    { code: "CONAE", name: "Comision Nacional de Actividades Espaciales", country: "Argentina", focus: "Earth observation and science missions", website: "https://www.argentina.gob.ar/ciencia/conae" },
+    { code: "AEB", name: "Brazilian Space Agency", country: "Brazil", focus: "National coordination, launch range development", website: "https://www.gov.br/aeb/" },
+    { code: "SANSA", name: "South African National Space Agency", country: "South Africa", focus: "Earth observation, space weather, applications", website: "https://www.sansa.org.za/" },
+    { code: "SUPARCO", name: "Pakistan Space and Upper Atmosphere Research Commission", country: "Pakistan", focus: "Satellites, upper atmosphere, national programmes", website: "https://www.suparco.gov.pk/" },
+    { code: "NASRDA", name: "National Space Research and Development Agency", country: "Nigeria", focus: "National satellites and space applications", website: "https://nasrda.gov.ng/" },
+    { code: "PhilSA", name: "Philippine Space Agency", country: "Philippines", focus: "Space data, disaster response, capacity building", website: "https://philsa.gov.ph/" },
+    { code: "EgSA", name: "Egyptian Space Agency", country: "Egypt", focus: "Satellite development and regional cooperation", website: "https://egsa.gov.eg/" },
+    { code: "SSA", name: "Saudi Space Agency", country: "Saudi Arabia", focus: "National policy, astronautics, research growth", website: "https://ssa.gov.sa/" },
+    { code: "TUA", name: "Turkish Space Agency", country: "Turkiye", focus: "National missions, lunar ambitions, coordination", website: "https://www.tua.gov.tr/" },
+    { code: "AEM", name: "Mexican Space Agency", country: "Mexico", focus: "Education, satellite policy, space applications", website: "https://www.gob.mx/aem" },
+    { code: "TASA", name: "Taiwan Space Agency", country: "Taiwan", focus: "Small satellites, launch ecosystem, research", website: "" },
+    { code: "NSAU", name: "State Space Agency of Ukraine", country: "Ukraine", focus: "Space industry coordination and satellite work", website: "" }
+  ],
+  curiosity: [
+    { tag: "rockets", title: "Why do rockets launch vertically first?", question: "Rocket seedha upar kyu jaata hai phir tilt kyu karta hai?", answer: "Rocket pehle dense atmosphere aur local obstacles se safely nikalta hai. Uske baad woh gradually tilt karta hai taaki speed sideways build ho aur orbit ke liye required horizontal velocity mil sake." },
+    { tag: "moon", title: "Why don't we see the far side of the Moon?", question: "Moon ka ek hi side Earth se kyu dikhta hai?", answer: "Moon tidally locked hai. Iska matlab Moon apni axis par utni hi speed se ghoomta hai jitni speed se woh Earth ke around chakkar lagata hai. Isi liye humein lagbhag wahi face dikhai deta rehta hai." },
+    { tag: "sun", title: "Why is Aditya-L1 special?", question: "Aditya-L1 ko L1 par hi kyu bheja gaya?", answer: "L1 point se spacecraft ko Sun ka uninterrupted view milta hai. Earth ya Moon uske saamne baar-baar nahi aate, isliye solar activity ko lagatar observe karna possible hota hai." },
+    { tag: "sky", title: "Why is the sky dark in space?", question: "Space me sky black kyu dikhta hai?", answer: "Earth par atmosphere sunlight ko scatter karta hai, isliye sky blue dikhta hai. Space me woh scattering medium nahi hota, isliye even sunlight present hone par background black lagta hai." },
+    { tag: "satellites", title: "How do satellites stay up?", question: "Satellite girta kyu nahi?", answer: "Satellite actually lagatar gir raha hota hai, lekin uski sideways speed itni high hoti hai ki Earth ki curved surface ke saath-saath fall karta rehta hai. Isi balance ko orbit kehte hain." },
+    { tag: "planets", title: "What makes Mars look red?", question: "Mars laal kyu dikhta hai?", answer: "Mars ki surface par iron oxide yani rust jaisa material bahut hai. Sunlight us dusty surface se reflect hokar laal rang ko strong bana deti hai." },
+    { tag: "meteors", title: "Meteor vs meteorite", question: "Shooting star aur meteorite me farq kya hai?", answer: "Jab chhota pathar atmosphere me jalta dikhe to woh meteor hai. Agar uska koi tukda zameen tak pahunch jaye to woh meteorite kehlata hai." },
+    { tag: "gravity", title: "Is there gravity in the ISS?", question: "Astronaut float karte hain to kya wahan gravity nahi hoti?", answer: "Gravity hoti hai, aur kaafi strong hoti hai. ISS aur astronauts dono Earth ki taraf free-fall me hote hain, isliye unhe microgravity jaisa feel hota hai." },
+    { tag: "eclipses", title: "Why is the Moon red in a lunar eclipse?", question: "Blood Moon red kyu ho jata hai?", answer: "Earth ki atmosphere sunlight ko bend aur filter karke mostly red light ko Moon tak pahunchne deti hai. Isliye lunar eclipse me Moon copper-red dikh sakta hai." },
+    { tag: "stars", title: "Do stars twinkle in space?", question: "Star twinkle kahan se aata hai?", answer: "Twinkling Earth ke atmosphere ki wajah se hoti hai. Space se stars zyada stable dikhenge kyunki wahan hawa ke turbulent layers unki light ko distort nahi karti." },
+    { tag: "navigation", title: "How does NavIC help India?", question: "NavIC ka real use kya hai?", answer: "NavIC India-focused navigation system hai jo positioning, timing, transport, disaster response, marine navigation aur strategic applications me help karta hai." },
+    { tag: "life", title: "Can plants grow in space?", question: "Space me paudhe ug sakte hain?", answer: "Haan, lekin controlled light, water, nutrients aur airflow chahiye hota hai. Space farming future long missions ke liye bahut important area hai." }
+  ]
+};

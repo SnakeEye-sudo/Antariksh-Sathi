@@ -1,0 +1,18 @@
+{
+  "name": "Antariksh Sathi",
+  "short_name": "Antariksh",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#06121b",
+  "theme_color": "#06121b",
+  "description": "Hindi-first space companion for daily sky visuals, ISRO watch, India stargazing spots, and student curiosity.",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+
