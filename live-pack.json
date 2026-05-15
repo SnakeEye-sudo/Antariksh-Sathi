@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T06:02:51.174765+00:00",
+  "generatedAt": "2026-05-15T06:09:56.508037+00:00",
   "headlines": [
     {
       "source": "ISRO",
@@ -18,13 +18,13 @@
     },
     {
       "source": "NASA",
-      "title": "Ice Moves Out of Aniak",
-      "summary": "Spring melt along Alaska\u2019s Kuskokwim River caused ice jams and flooding."
+      "title": "Picturing Earth in a New Light",
+      "summary": "A recent analysis revealed where artificial light at night has intensified, as well as where it has diminished."
     },
     {
       "source": "NASA",
-      "title": "NASA-Supported\u00a0Space Tech\u00a0Advances\u00a0Earthly\u00a0Construction",
-      "summary": "An innovative 3D printing process that advanced NASA\u2019s approach to outfitting a lunar habitat is making buildings on Earth beautiful, efficient, and strong.&#160; Instead of building&#160;structures&#160;layer by layer, "
+      "title": "NASA Draws on Industry for Mars Telecommunications Network",
+      "summary": "On Thursday, NASA issued a Request for Proposal (RFP), seeking industry collaboration for the Mars Telecommunications Network. Reliable, high bandwidth communications is necessary to relay science data, high-definition i"
     }
   ]
 }
