@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T06:33:43.280588+00:00",
+  "generatedAt": "2026-05-21T06:35:29.823800+00:00",
   "headlines": [
     {
       "source": "ISRO",
@@ -18,13 +18,13 @@
     },
     {
       "source": "NASA",
-      "title": "Fire Chars Santa Rosa Island",
-      "summary": "The blaze spread across the southern side of the second-largest island in California\u2019s Channel Islands National Park."
+      "title": "New Eruption in the Bismarck Sea",
+      "summary": "Satellite imagery shows a surge of new volcanic activity in the ocean near Papua New Guinea."
     },
     {
       "source": "NASA",
-      "title": "NASA\u2019s Psyche Mission Images Mars\u2019 Huygens Crater",
-      "summary": "Description Captured by the multispectral imager instrument on NASA\u2019s Psyche mission, this is an enhanced-color view of the large double-ring crater Huygens (upper right; about 290 miles, or 470 kilometers, in diameter) "
+      "title": "NASA\u00a0Announces\u00a0Winners in\u00a0University\u00a0Aeronautics Competition",
+      "summary": "The South Dakota State University team took first place at NASA\u2019s fifth annual Gateways to Blue Skies Competition, which challenged student teams to address a critical element of U.S. aviation: aircraft maintenance. This"
     }
   ]
 }
