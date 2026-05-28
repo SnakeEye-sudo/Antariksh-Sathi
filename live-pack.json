@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-05-27T06:46:50.821683+00:00",
+  "generatedAt": "2026-05-28T06:38:04.673768+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Ever Restless Mount Dukono Erupts",
-      "summary": "The volcano on Indonesia\u2019s Halmahera Island routinely ejects ash, volcanic gases, and volcanic bombs."
-    },
-    {
-      "source": "NASA",
-      "title": "NASA to Announce Artemis III Crew, Provide Mission Progress Update",
-      "summary": "NASA will provide an update on the agency\u2019s Artemis III mission and announce the astronauts assigned to the test flight during a live event at 11 a.m. EDT on Tuesday, June 9, at the agency\u2019s Johnson Space Center in Houst"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
