@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-06-01T07:30:31.027972+00:00",
+  "generatedAt": "2026-06-02T07:09:23.741998+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "Fire\u2019s Footprint on Santa Rosa Island",
+      "summary": "A wildland fire charred grassland, coastal sage scrub, and chaparral across one-third of the island, the second largest of the Channel Islands."
+    },
+    {
+      "source": "NASA",
+      "title": "NASA Awards Modification Contract for Reduced Gravity Test Aircraft",
+      "summary": "NASA selected Denmar Technical Services of Nevada to provide aircraft modifications, maintenance, and testing services to the Human Spaceflight Mission Directorate at NASA\u2019s Armstrong Flight Research Center in Edwards, C"
     }
   ]
 }
