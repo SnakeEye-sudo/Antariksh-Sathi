@@ -1,365 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#010118">
-<meta name="description" content="Antariksh Sathi – Space companion with planets, ISS, Mars, Moon phase">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>Antariksh Sathi 🚀</title>
-<link rel="manifest" href="manifest.json">
-<style>
-  :root {
-    --bg: #010118; --surface: #050830; --surface2: #0a1040;
-    --border: rgba(139,92,246,0.2); --accent: #8b5cf6; --accent2: #c4b5fd;
-    --star: #fde68a; --text: #e8e0ff; --muted: #5548a0;
-    --font: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; overflow: hidden; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); display: flex; flex-direction: column; }
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 10px; background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0; }
-  .topbar-brand { display: flex; align-items: center; gap: 10px; }
-  .topbar-title { font-size: 18px; font-weight: 700; }
-  .topbar-sub { font-size: 11px; color: var(--muted); }
-  .icon-btn { width: 38px; height: 38px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-  .main { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 80px; }
-  .view { display: none; } .view.active { display: block; }
-  .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-around; z-index: 100; padding-bottom: env(safe-area-inset-bottom); }
-  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 14px; cursor: pointer; border: none; background: none; color: var(--muted); font-family: var(--font); transition: color 0.2s; }
-  .nav-item.active { color: var(--accent); }
-  .nav-item span { font-size: 10px; font-weight: 600; }
-  .nav-item svg { width: 22px; height: 22px; }
-
-  /* HERO */
-  .hero-bg { position: relative; overflow: hidden; background: linear-gradient(180deg, #010118 0%, #050830 100%); padding: 0; }
-  .stars-canvas { position: absolute; inset: 0; pointer-events: none; }
-  .hero-content { position: relative; z-index: 1; text-align: center; padding: 30px 20px 20px; }
-  .moon-visual { font-size: 80px; margin-bottom: 8px; display: block; filter: drop-shadow(0 0 20px rgba(139,92,246,0.6)); }
-  .moon-phase-name { font-size: 18px; font-weight: 900; color: var(--accent2); }
-  .moon-detail { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-  /* CARDS */
-  .section-wrap { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 12px; }
-  .section-header { font-size: 12px; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 0 6px; }
-  .space-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: 18px; }
-  .planet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .planet-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 18px; padding: 16px; cursor: pointer; transition: all 0.2s; }
-  .planet-card:hover, .planet-card.active { border-color: var(--accent); background: var(--surface2); }
-  .planet-icon { font-size: 32px; margin-bottom: 6px; }
-  .planet-name { font-size: 15px; font-weight: 800; color: var(--accent2); }
-  .planet-detail { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
-  .planet-info { display: none; }
-  .planet-info.show { display: block; }
-  .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px; }
-  .info-item { background: var(--surface2); border-radius: 12px; padding: 10px; }
-  .info-key { font-size: 11px; color: var(--muted); font-weight: 700; }
-  .info-val { font-size: 14px; font-weight: 800; color: var(--accent2); margin-top: 2px; }
-
-  /* ISS */
-  .iss-card { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1.5px solid rgba(139,92,246,0.35); border-radius: 20px; padding: 20px; }
-  .iss-stat { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .iss-stat:last-child { border-bottom: none; }
-  .iss-key { font-size: 13px; color: var(--muted); }
-  .iss-val { font-size: 15px; font-weight: 800; color: var(--accent2); }
-  .live-badge { background: rgba(74,222,128,0.15); color: #4ade80; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
-  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: pulse 1.5s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  /* MOON PHASES */
-  .moon-phases-row { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; }
-  .moon-phases-row::-webkit-scrollbar { display: none; }
-  .phase-card { flex-shrink: 0; background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; padding: 14px 12px; text-align: center; min-width: 80px; }
-  .phase-card.today-phase { border-color: var(--accent); }
-  .phase-emoji { font-size: 28px; display: block; margin-bottom: 6px; }
-  .phase-name { font-size: 10px; color: var(--muted); font-weight: 700; }
-  .phase-date { font-size: 11px; color: var(--accent2); margin-top: 3px; font-weight: 700; }
-
-  /* QUIZ */
-  .quiz-wrap { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-  .quiz-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: 20px; }
-  .quiz-q { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 16px; line-height: 1.5; }
-  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
-  .quiz-opt { padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--surface2); color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font); text-align: left; transition: all 0.2s; }
-  .quiz-opt:hover { border-color: var(--accent); }
-  .quiz-opt.correct { background: rgba(74,222,128,0.2); border-color: #4ade80; color: #4ade80; }
-  .quiz-opt.wrong { background: rgba(239,68,68,0.2); border-color: #f87171; color: #f87171; }
-  .quiz-result { text-align: center; padding: 12px; font-size: 14px; font-weight: 700; color: var(--accent2); }
-  .quiz-next { width: 100%; padding: 14px; border-radius: 14px; border: none; background: var(--accent); color: white; font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--font); display: none; }
-  .score-badge { text-align: center; font-size: 22px; font-weight: 900; color: var(--star); }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06121b">
+  <meta name="description" content="Antariksh Sathi Bharat ke liye daily sky snapshot, ISRO watch, meteor shower calendar, stargazing spots aur space curiosity ko ek jagah laata hai.">
+  <title>Antariksh Sathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<div class="topbar">
-  <div class="topbar-brand">
-    <span style="font-size:22px">🚀</span>
-    <div>
-      <div class="topbar-title">Antariksh Sathi</div>
-      <div class="topbar-sub">Space • Moon • Planets • ISS</div>
-    </div>
-  </div>
-  <div class="live-badge"><div class="live-dot"></div>Live</div>
-</div>
-
-<div class="main">
-  <!-- HOME VIEW -->
-  <div class="view active" id="view-home">
-    <div class="hero-bg">
-      <canvas class="stars-canvas" id="starsCanvas"></canvas>
-      <div class="hero-content">
-        <span class="moon-visual" id="moonEmoji">🌕</span>
-        <div class="moon-phase-name" id="moonPhaseName">Full Moon</div>
-        <div class="moon-detail" id="moonDetail">Illumination: –%</div>
-      </div>
-    </div>
-    <div class="section-wrap">
-      <div class="section-header">ISS – International Space Station</div>
-      <div class="iss-card" id="issCard">
-        <div class="iss-stat"><span class="iss-key">🛰️ Status</span><span class="iss-val">Loading...</span></div>
-      </div>
-      <div class="section-header">Agle Moon Phases</div>
-      <div class="moon-phases-row" id="moonPhasesRow"></div>
-    </div>
+<body data-theme="night">
+  <div class="sky-backdrop">
+    <div class="sky-glow glow-a"></div>
+    <div class="sky-glow glow-b"></div>
+    <div class="sky-grid"></div>
+    <div class="sky-stars"></div>
   </div>
 
-  <!-- PLANETS VIEW -->
-  <div class="view" id="view-planets">
-    <div style="padding:16px">
-      <div class="section-header" style="padding-top:0">Hamare Solar System ke Grah</div>
-      <div class="planet-grid" id="planetGrid"></div>
-      <div id="planetInfoBox" class="space-card planet-info" style="margin-top:12px"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <div class="drawer-head">
+        <div>
+          <p class="eyebrow" data-i18n="menuLabel">Quick Controls</p>
+          <h2 data-i18n="menuTitle">Antariksh menu</h2>
+        </div>
+        <button class="icon-btn" id="closeDrawerBtn" type="button" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="drawer-grid">
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="languageLabel">Language</p>
+          <h3 data-i18n="languageTitle">Hindi aur English</h3>
+          <div class="toggle-row" role="group" aria-label="Language">
+            <button class="mini-toggle" id="langHiBtn" type="button">हिन्दी</button>
+            <button class="mini-toggle" id="langEnBtn" type="button">English</button>
+          </div>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="themeLabel">Theme</p>
+          <h3 data-i18n="themeTitle">Alive sky mode</h3>
+          <button class="menu-btn" id="themeBtn" type="button" data-i18n="themeAction">Theme badlo</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="installLabel">Install</p>
+          <h3 data-i18n="installTitle">App ko phone par rakho</h3>
+          <button class="menu-btn" id="installBtn" type="button" data-i18n="installAction">Install app</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="authLabel">Family login</p>
+          <h3 data-i18n="authTitle">Ek hi ID, poori family</h3>
+          <p class="muted small-copy" id="authStateText" data-i18n="authLoading">Login status load ho raha hai...</p>
+          <button class="menu-btn" id="authBtn" type="button" data-i18n="authSignIn">Login with Google</button>
+        </section>
+
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="reminderLabel">Reminder</p>
+          <h3 data-i18n="reminderTitle">Night sky yaad dilao</h3>
+          <label class="field-label" for="reminderTime" data-i18n="reminderField">Preferred reminder time</label>
+          <input id="reminderTime" class="text-input" type="time" value="20:30">
+          <button class="menu-btn" id="saveReminderBtn" type="button" data-i18n="reminderSave">Save reminder</button>
+          <p class="muted small-copy" id="reminderStatus"></p>
+        </section>
+
+        <section class="menu-panel menu-panel-wide">
+          <p class="eyebrow" data-i18n="pagesLabel">Pages</p>
+          <h3 data-i18n="pagesTitle">Family links aur info</h3>
+          <div class="menu-links">
+            <a href="about.html" data-i18n="pageAbout">About</a>
+            <a href="resources.html" data-i18n="pageResources">Resources</a>
+            <a href="contact.html" data-i18n="pageContact">Contact</a>
+            <a href="privacy-policy.html" data-i18n="pagePrivacy">Privacy Policy</a>
+            <a href="terms.html" data-i18n="pageTerms">Terms &amp; Conditions</a>
+            <a href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="pageFamily">Aapka-Sathi Family</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </aside>
+
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-wrap">
+          <img src="logo.png" alt="Antariksh Sathi logo" class="brand-logo">
+          <div>
+            <p class="hero-tag" data-i18n="brandTag">Bharat ka daily sky desk</p>
+            <h1>Antariksh Sathi</h1>
+          </div>
+        </div>
+        <button class="hamburger-btn" id="openDrawerBtn" type="button" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <a class="family-chip" href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="familyChip">Aapka-Sathi family ka hissa</a>
+          <h2 class="hero-headline" data-i18n="heroHeadline">Aaj ka sky scene, ISRO watch aur space learning ek jagah.</h2>
+          <p class="hero-text" data-i18n="heroText">
+            App khulte hi aaj ke din ka Moon, Sun aur planetary scene dikhega. Online hone par latest official space headlines bhi refresh hoti rahengi, aur offline mode me bhi core pack ready rahega.
+          </p>
+
+          <div class="hero-badges" id="statusStrip"></div>
+
+          <div class="live-feed-box">
+            <div class="live-feed-head">
+              <p class="eyebrow" data-i18n="liveDeskLabel">Live desk</p>
+              <span class="muted" id="liveFeedUpdated"></span>
+            </div>
+            <div id="liveFeedList" class="live-feed-list"></div>
+          </div>
+        </section>
+
+        <section class="hero-sky">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow" data-i18n="todaySkyLabel">Aaj ka sky snapshot</p>
+              <h2 id="todaySkyTitle">Loading...</h2>
+            </div>
+            <p class="muted" id="todaySkyMeta"></p>
+          </div>
+
+          <div class="sky-mini-grid">
+            <article class="sky-mini-card">
+              <div class="moon-visual" id="moonVisual">
+                <div class="moon-core"></div>
+                <div class="moon-shadow" id="moonShadow"></div>
+              </div>
+              <div>
+                <p class="mini-label" data-i18n="moonLabel">Moon</p>
+                <h3 id="moonTitle">-</h3>
+                <p class="muted" id="moonMeta"></p>
+              </div>
+            </article>
+
+            <article class="sky-mini-card">
+              <div class="sun-visual">
+                <div class="sun-arc"></div>
+                <div class="sun-dot" id="sunDot"></div>
+              </div>
+              <div>
+                <p class="mini-label" data-i18n="sunLabel">Sun</p>
+                <h3 id="sunTitle">-</h3>
+                <p class="muted" id="sunMeta"></p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="planetLabel">Planet board</p>
+            <h2 data-i18n="planetTitle">Aaj ki planetary positioning</h2>
+          </div>
+          <p class="muted" data-i18n="planetNote">Yeh ek educational orbit view hai jo date ke saath daily update hota hai.</p>
+        </div>
+        <div class="planet-layout">
+          <div class="planet-board" id="planetBoard">
+            <div class="sun-core"></div>
+          </div>
+          <div class="planet-legend" id="planetLegend"></div>
+        </div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="eventLabel">Sky calendar</p>
+            <h2 data-i18n="eventTitle">Agla important sky event</h2>
+          </div>
+          <div class="filter-row" id="eventFilters"></div>
+        </div>
+        <article class="event-spotlight" id="eventSpotlight"></article>
+        <div class="card-grid" id="eventsGrid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="launchLabel">ISRO watch</p>
+            <h2 data-i18n="launchTitle">Missions aur programme pulse</h2>
+          </div>
+        </div>
+        <div class="stack-grid" id="launchGrid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="curiosityLabel">Student lab</p>
+            <h2 data-i18n="curiosityTitle">Space curiosity tool</h2>
+          </div>
+          <button class="menu-btn subtle-btn" id="randomCuriosityBtn" type="button" data-i18n="curiosityButton">Kuch naya dikhao</button>
+        </div>
+        <div class="filter-row" id="curiosityFilters"></div>
+        <article class="curiosity-card" id="curiosityCard"></article>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="stargazeLabel">India spots</p>
+            <h2 data-i18n="stargazeTitle">Rajya ke hisaab se stargazing spots</h2>
+          </div>
+          <label class="select-wrap">
+            <span class="sr-only">Select state</span>
+            <select id="stateSelect"></select>
+          </label>
+        </div>
+        <div class="spotlight-card" id="spotlightCard"></div>
+        <div class="card-grid compact-grid" id="stargazingGrid"></div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" data-i18n="agencyLabel">World agencies</p>
+            <h2 data-i18n="agencyTitle">Major space agencies directory</h2>
+          </div>
+          <input id="agencySearch" class="text-input agency-search" type="search" placeholder="ISRO, NASA, ESA..." aria-label="Search space agencies">
+        </div>
+        <div class="card-grid compact-grid" id="agencyGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Antariksh Sathi logo">
+        <div>
+          <strong>Antariksh Sathi</strong>
+          <p data-i18n="footerNote">Daily sky aur space curiosity ko simple banane ke liye.</p>
+        </div>
+      </div>
+      <p class="footer-credit">Crafted and developed by <strong>Er. Sangam Krishna</strong>.</p>
+    </footer>
+  </div>
+
+  <div class="loading-shell" id="loadingShell" aria-live="polite">
+    <div class="loading-card">
+      <div class="loader-ring"></div>
+      <p class="eyebrow" data-i18n="loadingLabel">Space pack</p>
+      <h2 id="loadingMessage">Orbit align ho raha hai...</h2>
     </div>
   </div>
 
-  <!-- QUIZ VIEW -->
-  <div class="view" id="view-quiz">
-    <div class="quiz-wrap">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div class="section-header" style="padding:0">Space Quiz 🧠</div>
-        <div class="score-badge" id="quizScore">⭐ 0</div>
-      </div>
-      <div class="quiz-card">
-        <div class="quiz-q" id="quizQ"></div>
-        <div class="quiz-options" id="quizOpts"></div>
-        <div class="quiz-result" id="quizResult"></div>
-        <button class="quiz-next" id="quizNext" onclick="nextQuestion()">Agla Sawaal →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<nav class="bottom-nav">
-  <button class="nav-item active" data-view="home">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><path d="M2 12h20"/></svg>
-    <span>Home</span>
-  </button>
-  <button class="nav-item" data-view="planets">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-    <span>Grah</span>
-  </button>
-  <button class="nav-item" data-view="quiz">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/><path d="M12 17h.01"/></svg>
-    <span>Quiz</span>
-  </button>
-</nav>
-
-<script>
-// ====== STARS CANVAS ======
-function drawStars() {
-  const canvas = document.getElementById('starsCanvas');
-  const ctx = canvas.getContext('2d');
-  const hero = canvas.parentElement;
-  canvas.width = hero.offsetWidth;
-  canvas.height = hero.offsetHeight;
-  for (let i = 0; i < 100; i++) {
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
-    const r = Math.random() * 1.5 + 0.2;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.8 + 0.2})`;
-    ctx.fill();
-  }
-}
-drawStars();
-
-// ====== MOON PHASE ======
-function getMoonPhase(date) {
-  const knownNew = new Date('2000-01-06T18:14:00Z');
-  const cycle = 29.53058867;
-  const diff = (date - knownNew) / (1000 * 60 * 60 * 24);
-  const age = ((diff % cycle) + cycle) % cycle;
-  const illum = (1 - Math.cos(2 * Math.PI * age / cycle)) / 2;
-  let icon, name;
-  if (age < 1.85) { icon = '🌑'; name = 'New Moon'; }
-  else if (age < 7.38) { icon = '🌒'; name = 'Waxing Crescent'; }
-  else if (age < 9.22) { icon = '🌓'; name = 'First Quarter'; }
-  else if (age < 14.77) { icon = '🌔'; name = 'Waxing Gibbous'; }
-  else if (age < 16.61) { icon = '🌕'; name = 'Full Moon'; }
-  else if (age < 22.15) { icon = '🌖'; name = 'Waning Gibbous'; }
-  else if (age < 23.99) { icon = '🌗'; name = 'Last Quarter'; }
-  else if (age < 29.53) { icon = '🌘'; name = 'Waning Crescent'; }
-  else { icon = '🌑'; name = 'New Moon'; }
-  return { icon, name, age: age.toFixed(1), illum: (illum * 100).toFixed(0) };
-}
-
-const moonNow = getMoonPhase(new Date());
-document.getElementById('moonEmoji').textContent = moonNow.icon;
-document.getElementById('moonPhaseName').textContent = moonNow.name;
-document.getElementById('moonDetail').textContent = `Illumination: ${moonNow.illum}% • Age: ${moonNow.age} days`;
-
-// Next 6 phases
-const phaseRow = document.getElementById('moonPhasesRow');
-const phases = [
-  { days: 0, icon: moonNow.icon, name: moonNow.name },
-];
-for (let i = 1; i <= 5; i++) {
-  const d = new Date(); d.setDate(d.getDate() + i * 4);
-  const p = getMoonPhase(d);
-  phases.push({ days: i * 4, icon: p.icon, name: p.name, date: d.toLocaleDateString('en', { day: 'numeric', month: 'short' }) });
-}
-phaseRow.innerHTML = phases.map((p, i) =>
-  `<div class="phase-card ${i===0?'today-phase':''}">
-    <span class="phase-emoji">${p.icon}</span>
-    <div class="phase-name">${p.name.split(' ')[0]}</div>
-    <div class="phase-date">${i === 0 ? 'Aaj' : p.date}</div>
-  </div>`
-).join('');
-
-// ====== ISS DATA ======
-async function loadISS() {
-  try {
-    // Note: Open Notify ISS API (free, no key)
-    const res = await fetch('http://api.open-notify.org/iss-now.json');
-    const d = await res.json();
-    document.getElementById('issCard').innerHTML = `
-      <div class="iss-stat"><span class="iss-key">🛰️ Status</span><span class="iss-val" style="color:#4ade80">Orbiting Earth</span></div>
-      <div class="iss-stat"><span class="iss-key">📍 Latitude</span><span class="iss-val">${parseFloat(d.iss_position.latitude).toFixed(2)}°</span></div>
-      <div class="iss-stat"><span class="iss-key">📍 Longitude</span><span class="iss-val">${parseFloat(d.iss_position.longitude).toFixed(2)}°</span></div>
-      <div class="iss-stat"><span class="iss-key">⚡ Speed</span><span class="iss-val">~27,600 km/h</span></div>
-      <div class="iss-stat"><span class="iss-key">📏 Altitude</span><span class="iss-val">~408 km</span></div>
-      <div class="iss-stat"><span class="iss-key">🕐 Updated</span><span class="iss-val">${new Date().toLocaleTimeString()}</span></div>
-    `;
-  } catch {
-    // Fallback: static data
-    document.getElementById('issCard').innerHTML = `
-      <div class="iss-stat"><span class="iss-key">🛰️ Status</span><span class="iss-val" style="color:#4ade80">Orbiting Earth ✅</span></div>
-      <div class="iss-stat"><span class="iss-key">⚡ Orbital Speed</span><span class="iss-val">~27,600 km/h</span></div>
-      <div class="iss-stat"><span class="iss-key">📏 Altitude</span><span class="iss-val">~408 km</span></div>
-      <div class="iss-stat"><span class="iss-key">🔄 Orbit Period</span><span class="iss-val">~92 minutes</span></div>
-      <div class="iss-stat"><span class="iss-key">👨‍🚀 Crew</span><span class="iss-val">7 Astronauts</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:8px">Live position: api.open-notify.org (offline fallback)</div>
-    `;
-  }
-}
-loadISS();
-
-// ====== PLANETS ======
-const PLANETS = [
-  { name: 'Mercury', icon: '☿️', color: '#a0a0a0', desc: 'Sabse chhota grah', data: { 'Distance from Sun': '57.9 million km', 'Diameter': '4,879 km', 'Day': '59 Earth days', 'Year': '88 Earth days', 'Moons': '0', 'Temp': '-180°C to 430°C' }, fun: 'Mercury pe ek saal, ek din se chhota hota hai!' },
-  { name: 'Venus', icon: '♀️', color: '#ff9f40', desc: 'Sabse garm grah', data: { 'Distance from Sun': '108.2 million km', 'Diameter': '12,104 km', 'Day': '243 Earth days', 'Year': '225 Earth days', 'Moons': '0', 'Temp': '465°C' }, fun: 'Venus pe sooraj PASCHIM se ugta hai!' },
-  { name: 'Earth', icon: '🌍', color: '#4ade80', desc: 'Hamara ghar', data: { 'Distance from Sun': '149.6 million km', 'Diameter': '12,742 km', 'Day': '24 hours', 'Year': '365.25 days', 'Moons': '1', 'Temp': '-89°C to 58°C' }, fun: 'Prithvi 1,670 km/h ki raftaar se ghoomti hai!' },
-  { name: 'Mars', icon: '🔴', color: '#f87171', desc: 'Lal grah', data: { 'Distance from Sun': '227.9 million km', 'Diameter': '6,779 km', 'Day': '24 hrs 37 min', 'Year': '687 Earth days', 'Moons': '2', 'Temp': '-125°C to 20°C' }, fun: 'Mars pe Olympus Mons hai jo Everest se 3x bada hai!' },
-  { name: 'Jupiter', icon: '🟤', color: '#fbbf24', desc: 'Sabse bada grah', data: { 'Distance from Sun': '778.5 million km', 'Diameter': '139,820 km', 'Day': '10 hours', 'Year': '12 Earth years', 'Moons': '95', 'Mass': '2.5× all other planets' }, fun: 'Jupiter ka Great Red Spot 350+ saalon se chal raha hai!' },
-  { name: 'Saturn', icon: '💛', color: '#fde68a', desc: 'Ring wala grah', data: { 'Distance from Sun': '1.43 billion km', 'Diameter': '116,460 km', 'Day': '10.7 hours', 'Year': '29 Earth years', 'Moons': '146', 'Ring Width': '~73,000 km' }, fun: 'Saturn paani se bhi halka hai – paani mein tairta!' },
-  { name: 'Uranus', icon: '🔵', color: '#7dd3fc', desc: 'Sidha lata grah', data: { 'Distance from Sun': '2.87 billion km', 'Diameter': '50,724 km', 'Day': '17.2 hours', 'Year': '84 Earth years', 'Moons': '28', 'Temp': '-224°C' }, fun: 'Uranus apni side pe ghoomta hai – bilkul lete hue!' },
-  { name: 'Neptune', icon: '🫐', color: '#818cf8', desc: 'Sabse door grah', data: { 'Distance from Sun': '4.5 billion km', 'Diameter': '49,528 km', 'Day': '16 hours', 'Year': '165 Earth years', 'Moons': '16', 'Wind Speed': '2,100 km/h' }, fun: 'Neptune ne abhi tak ek bhi puri orbit nahi ki – 1846 mein mila tha!' },
-];
-
-let activePlanet = null;
-document.getElementById('planetGrid').innerHTML = PLANETS.map((p, i) =>
-  `<div class="planet-card" id="pc${i}" onclick="showPlanet(${i})">
-    <div class="planet-icon">${p.icon}</div>
-    <div class="planet-name" style="color:${p.color}">${p.name}</div>
-    <div class="planet-detail">${p.desc}</div>
-  </div>`
-).join('');
-
-function showPlanet(i) {
-  document.querySelectorAll('.planet-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('pc' + i).classList.add('active');
-  const p = PLANETS[i];
-  const box = document.getElementById('planetInfoBox');
-  box.classList.add('show');
-  box.innerHTML = `
-    <div style="font-size:36px;margin-bottom:8px">${p.icon}</div>
-    <div style="font-size:18px;font-weight:900;color:${p.color};margin-bottom:4px">${p.name}</div>
-    <div style="font-size:13px;color:var(--muted);margin-bottom:12px">${p.desc}</div>
-    <div class="info-grid">${Object.entries(p.data).map(([k,v]) =>
-      `<div class="info-item"><div class="info-key">${k}</div><div class="info-val">${v}</div></div>`
-    ).join('')}</div>
-    <div style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:14px;margin-top:12px">
-      <div style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px">🤯 Rochak Tathya</div>
-      <div style="font-size:14px;color:var(--accent2)">${p.fun}</div>
-    </div>
-  `;
-  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// ====== QUIZ ======
-const QUESTIONS = [
-  { q: 'Surya se sabse door kaun sa grah hai?', opts: ['Saturn', 'Uranus', 'Neptune', 'Jupiter'], ans: 2 },
-  { q: 'Prithvi ka ek hi natural satellite hai. Uska naam kya hai?', opts: ['Phobos', 'Titan', 'Europa', 'Luna (Moon)'], ans: 3 },
-  { q: 'Kaun sa grah paani mein tair sakta hai?', opts: ['Jupiter', 'Saturn', 'Uranus', 'Neptune'], ans: 1 },
-  { q: 'ISS kitni raftaar se orbit karta hai?', opts: ['~7,700 km/h', '~17,500 km/h', '~27,600 km/h', '~50,000 km/h'], ans: 2 },
-  { q: 'Venus par ek din (rotation) kितने Earth days ka hota hai?', opts: ['10', '88', '243', '365'], ans: 2 },
-  { q: 'Mars ke kitne chandrama (moons) hain?', opts: ['0', '1', '2', '4'], ans: 2 },
-  { q: 'Andhere mein taaro ki khoj aur study kya kehlata hai?', opts: ['Astrology', 'Astronomy', 'Cosmology', 'Geology'], ans: 1 },
-  { q: 'Sabse bade grah ka naam kya hai?', opts: ['Saturn', 'Neptune', 'Uranus', 'Jupiter'], ans: 3 },
-  { q: 'Hamare Solar System mein kitne ग्रह (planets) hain?', opts: ['7', '8', '9', '10'], ans: 1 },
-  { q: 'Light ki speed kitni hai?', opts: ['~3 lakh km/s', '~1 lakh km/s', '~30,000 km/s', '~10 lakh km/s'], ans: 0 },
-];
-
-let qIndex = 0, score = 0;
-const shuffled = [...QUESTIONS].sort(() => Math.random() - 0.5);
-
-function loadQuestion() {
-  if (qIndex >= shuffled.length) {
-    document.getElementById('quizQ').textContent = '🎉 Quiz khatam! Tumhara score:';
-    document.getElementById('quizOpts').innerHTML = `<div style="text-align:center;font-size:48px;font-weight:900;color:var(--star)">${score}/${shuffled.length}</div>`;
-    document.getElementById('quizResult').textContent = score >= 8 ? 'Bahut badhiya! Tum Space Expert ho! 🚀' : score >= 5 ? 'Achha score! Thoda aur seekho. 🌟' : 'Koi baat nahi, try karo again! 💪';
-    document.getElementById('quizNext').style.display = 'none';
-    return;
-  }
-  const q = shuffled[qIndex];
-  document.getElementById('quizQ').textContent = `Q${qIndex + 1}. ${q.q}`;
-  document.getElementById('quizResult').textContent = '';
-  document.getElementById('quizNext').style.display = 'none';
-  document.getElementById('quizOpts').innerHTML = q.opts.map((o, i) =>
-    `<button class="quiz-opt" onclick="answerQ(${i})">${o}</button>`
-  ).join('');
-}
-
-function answerQ(i) {
-  const q = shuffled[qIndex];
-  const opts = document.querySelectorAll('.quiz-opt');
-  opts.forEach(o => o.disabled = true);
-  if (i === q.ans) {
-    opts[i].classList.add('correct');
-    score++;
-    document.getElementById('quizScore').textContent = '⭐ ' + score;
-    document.getElementById('quizResult').textContent = '✅ Sahi jawab!';
-  } else {
-    opts[i].classList.add('wrong');
-    opts[q.ans].classList.add('correct');
-    document.getElementById('quizResult').textContent = '❌ Galat! Sahi jawab tha: ' + q.opts[q.ans];
-  }
-  document.getElementById('quizNext').style.display = 'block';
-}
-
-function nextQuestion() { qIndex++; loadQuestion(); }
-
-loadQuestion();
-
-// NAV
-document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    item.classList.add('active');
-    document.getElementById('view-' + item.dataset.view).classList.add('active');
-  });
-});
-</script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script defer src="notification-prompt.js"></script>
 </body>
 </html>
+
+
