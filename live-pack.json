@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-06-07T06:49:17.864636+00:00",
+  "generatedAt": "2026-06-08T07:14:36.300573+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA\u2019s\u00a0X-59\u00a0Aircraft\u00a0Flies Supersonic for First Time",
-      "summary": "NASA\u2019s&#160;experimental&#160;X-59&#160;aircraft&#160;marked&#160;a major milestone&#160;Friday,&#160;June&#160;5,&#160;when it&#160;flew faster than the speed of sound for the first time,&#160;setting the stage for&#160"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA Announces Winners of 2026\u00a0University Innovation\u00a0Competition",
-      "summary": "NASA announced the Massachusetts Institute of Technology project, Exploration-Class Lunar Integrated Power SystEm, as the first place winner for the 2026 Revolutionary Aerospace Systems Concepts \u2013 Academic Linkage (RASC-"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
