@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-06-17T07:36:40.733425+00:00",
+  "generatedAt": "2026-06-18T07:17:34.262595+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "El Ni\u00f1o Is Underway",
+      "summary": "Satellite observations of sea surface height indicated that the 2026 event continued to strengthen in early June."
+    },
+    {
+      "source": "NASA",
+      "title": "NASA Announces Public-Private Partnership to Advance Mars Science",
+      "summary": "NASA Wednesday announced a new public\u2011private partnership to advance Mars science by combining the agency\u2019s scientific leadership with commercial innovation. Under this model, NASA will provide the Aeolus atmospheric\u2011sci"
     }
   ]
 }
