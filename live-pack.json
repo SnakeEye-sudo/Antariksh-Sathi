@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-06-23T06:32:36.124792+00:00",
+  "generatedAt": "2026-06-24T06:29:47.659252+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Rising Waters Swamp Lake Naivasha",
-      "summary": "Relentless rains are threatening a lake in Kenya\u2019s Great Rift Valley that has become a key hub in the global flower trade."
-    },
-    {
-      "source": "NASA",
-      "title": "NASA Awards Solutions for Federal Enterprise Procurement Contracts",
-      "summary": "NASA will begin processing the awards of multiple contracts for the Solutions for Enterprise\u2011wide Procurement (SEWP) VI Government-wide Acquisition Contract. The contract provides streamlined access to commercial product"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
