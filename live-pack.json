@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-06-25T06:33:15.695607+00:00",
+  "generatedAt": "2026-06-26T06:36:34.929916+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "A Turquoise Tint for the Black Sea",
-      "summary": "Phytoplankton added a milky blue hue to the waters of the Black Sea and nearby waterways in spring and summer 2026."
-    },
-    {
-      "source": "NASA",
-      "title": "NASA\u2019s TESS Mission Reveals the \u201cPuffiest\u201d Planets Ever Found",
-      "summary": "NASA has revealed two new \u201csuper-puff\u201d planets, giant worlds so light that their density is comparable to cotton candy. Scientists calculate that these Jupiter-sized planets are the \u201cpuffiest\u201d worlds ever found."
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
