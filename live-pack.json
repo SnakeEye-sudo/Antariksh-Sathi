@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-06-28T06:44:38.801960+00:00",
+  "generatedAt": "2026-06-29T07:13:34.951894+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "NASA Announces Winners for 2026 Human Lander Challenge",
+      "summary": "NASA has announced the top student-developed solutions for environmental control and life support systems in future crewed lunar landers from participants in the 2026 Human Lander Challenge. The announcement marks the cu"
+    },
+    {
+      "source": "NASA",
+      "title": "NASA Tests New Refuel Device for Future In-Space Refueling Missions",
+      "summary": "For NASA\u2019s next generation of deep space exploration missions, spacecraft may need to refuel in Earth orbit before pushing farther into the solar system. Similar to how a gas pump needs a nozzle to fit your fuel tank, fu"
     }
   ]
 }
