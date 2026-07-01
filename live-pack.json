@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-06-30T06:39:31.718883+00:00",
+  "generatedAt": "2026-07-01T06:52:52.820534+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Northwest Earth and Space Science Pathways Project Celebrates Student Innovation Through ROADS from Earth to Venus National Challenge",
-      "summary": "The Northwest Earth and Space Science Pathways (NESSP) project recently concluded its 2025\u20132026 ROADS (Rover Observation And Discoveries in Space) from Earth to Venus National Challenge, a NASA Science Activation program"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA, SBA Announce New Initiative to Scale American Space Economy",
-      "summary": "NASA and the U.S. Small Business Administration (SBA)&#160;launched&#160;the SBIC-NASA Initiative on Monday to increase investment in American manufacturers of industrial components and providers of technologies critical"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
