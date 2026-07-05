@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-07-04T05:59:39.311872+00:00",
+  "generatedAt": "2026-07-05T06:24:53.727754+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA\u2019s Hubble Captures Crimson Cloud Sparkling with White, Blue Stars",
-      "summary": "Blue and white stars shine brightly against crimson gas in this image from NASA\u2019s Hubble Space Telescope."
-    },
-    {
-      "source": "NASA",
-      "title": "NASA\u2019s Hubble Spots Star-Spangled Cosmic Scene",
-      "summary": "More than 500,000 stars blaze red, white, and blue in this NASA Hubble image of the globular cluster Messier 3 (M3)."
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
