@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-07-12T05:42:48.375915+00:00",
+  "generatedAt": "2026-07-13T05:53:25.801159+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Early Career Faculty (ECF) 2025 Awards",
-      "summary": "Back to ECF Home Advanced Diagnostics for High-Enthalpy Test Facilities Simulating Spacecraft Atmospheric Entry Planning for Autonomous Spacecraft Using Machine Learning Methods to Enable Onboard Guidance, Navigation, an"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA Volunteers Help Zooniverse Reach 1 Billion Classifications",
-      "summary": "The Zooniverse, a NASA grantee that runs the world\u2019s largest platform for online people-powered research, has reached an extraordinary milestone: 1 billion classifications contributed by volunteers around the world. This"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
