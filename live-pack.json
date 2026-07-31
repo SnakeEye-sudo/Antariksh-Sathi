@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-07-30T05:24:34.341433+00:00",
+  "generatedAt": "2026-07-31T05:50:58.115069+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "APOD: 2026 July 31 \u2013 NGC 4372 and the Dark Doodad",
+      "summary": "APOD Science APOD APOD: 2026 July 31 \u2013 NGC\u2026 Today\u2019s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photogra"
+    },
+    {
+      "source": "NASA",
+      "title": "Destructive Fires Char Western Europe",
+      "summary": "Raging wildfires disrupted summer in Spain and France amid sweltering heat waves and prolonged drought."
     }
   ]
 }
