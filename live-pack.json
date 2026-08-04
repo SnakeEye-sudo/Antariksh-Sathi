@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-08-03T05:57:40.799118+00:00",
+  "generatedAt": "2026-08-04T05:32:27.406250+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "APOD: 2026 August 3 \u2013 Vaporizing Meteor Photobombs the Lacerta Nebula",
-      "summary": "APOD Science APOD APOD: 2026 August 3 \u2013\u2026 Today\u2019s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph "
-    },
-    {
-      "source": "NASA",
-      "title": "APOD: 2026 August 2 \u2013 A Fire Rainbow over West Virginia",
-      "summary": "APOD Science APOD APOD: 2026 August 2 \u2013 A Fire\u2026 Today\u2019s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or phot"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
