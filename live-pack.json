@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-08-05T05:31:47.381842+00:00",
+  "generatedAt": "2026-08-06T05:33:55.818979+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA Will Attempt to Observe Rocket Part\u2019s Lunar Impact",
-      "summary": "Using ground-based telescopes and space-based assets, NASA and SpaceX are tracking a used Falcon 9 upper stage from a commercial mission expected to impact the Moon on Wednesday, Aug. 5, near the Einstein and Bell crater"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA\u2019s PUNCH Sharpens Solar Storm Forecasting in First Test",
-      "summary": "Using continuous imagery from NASA\u2019s PUNCH (Polarimeter to Unify the Corona and Heliosphere) mission, scientists predicted the near-Earth arrival of a solar eruption to within 30 minutes in an initial proof of concept te"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
