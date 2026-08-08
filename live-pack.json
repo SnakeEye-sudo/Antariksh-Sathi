@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-08-07T04:36:39.509916+00:00",
+  "generatedAt": "2026-08-08T03:53:17.811451+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Educators & Teens Get Hands-On With TEMPO Data to Help Investigate Local Air Quality",
-      "summary": "The NASA Science Activation Program\u2019s Cosmic Storytelling with NASA Data (CosmicDS) project, led by Harvard University in Cambridge, Massachusetts, works to bring authentic NASA data into the hands of educators and learn"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA\u2019s SkyFall Helicopters at Work (Artist\u2019s Concept)",
-      "summary": "Description This artist\u2019s concept depicts NASA\u2019s three SkyFall Mars helicopters collecting data while flying over the surface of the Red Planet. The green frequency waves emanating from the helicopters\u2019 large antennas de"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
