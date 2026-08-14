@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-08-13T04:27:10.564400+00:00",
+  "generatedAt": "2026-08-14T04:24:34.102407+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA Data Helps Commercial Space Plan Living Off Our Moon",
-      "summary": "The barren lunar landscape has some important resources, such as water and minerals like iron and titanium, but extracting and processing them will require special equipment. Where those resources can be found will dicta"
-    },
-    {
-      "source": "NASA",
-      "title": "2026 Total Solar Eclipse in Spain",
-      "summary": "A total solar eclipse is seen from San Mill\u00e1n de los Caballeros, Spain, Wednesday, Aug. 12, 2026. A total solar eclipse \u2013 the Moon passing between the Sun and Earth, completely blocking the face of the Sun \u2013 swept across"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
