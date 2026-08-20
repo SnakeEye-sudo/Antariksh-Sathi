@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-08-19T03:26:08.941000+00:00",
+  "generatedAt": "2026-08-20T03:26:06.629227+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA\u2019s LRO Images Falcon 9 Crater on Moon, Learns New Details",
-      "summary": "Between Aug. 11 and 12, NASA\u2019s Lunar Reconnaissance Orbiter (LRO) captured a series of images of a new crater on the Moon. The crater formed on Aug. 5, when a SpaceX Falcon 9 upper stage impacted the surface following it"
-    },
-    {
-      "source": "NASA",
-      "title": "NASA Student Aviation Challenge Focuses on Nation\u2019s Infrastructure",
-      "summary": "NASA\u2019s next Gateways to Blue Skies competition invites collegiate teams to imagine innovative new ways aircraft could inspect land-based infrastructure, such as bridges and tunnels, to improve safety, reliability, and co"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
