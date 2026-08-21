@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-08-20T03:26:06.629227+00:00",
+  "generatedAt": "2026-08-21T03:31:24.916061+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "SmallSat 2026",
+      "summary": "SmallSat 2026 Join NASA in the Exhibit Hall (Booth # 635, 835, 641, and 940) for Storytelling by NASA experts. Full Agenda below. MONDAY, AUGUST 24, 9:00 \u2013 10:00 AM WelcomeJose NunezBryceTech\u2019s Smallsats by the Numbers: "
+    },
+    {
+      "source": "NASA",
+      "title": "Artemis Mission Patches",
+      "summary": "A jacket decorated with Artemis I and II mission patches, along with other NASA patches hangs on the back of a chair on Thursday, Aug. 6, 2026, inside the Rocco A. Petrone Launch Control Center at NASA\u2019s Kennedy Space Ce"
     }
   ]
 }
