@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-09-02T07:17:43.093882+00:00",
+  "generatedAt": "2026-09-03T07:21:05.100686+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "NASA Selects Blue Origin as Mars Telecommunications Network Provider",
-      "summary": "NASA awarded Blue Origin a contract Tuesday to develop the agency\u2019s Mars Telecommunications Network, a next-generation communications system that will enable reliable, high-bandwidth communications and navigation service"
-    },
-    {
-      "source": "NASA",
-      "title": "What\u2019s Up: September 2026 Skywatching Tips from NASA",
-      "summary": "Brilliant Venus and a Harvest Moon Use the Moon to find Antares and the Teapot, spot brilliant Venus, welcome the equinox, and see the Harvest Moon near Saturn and Neptune. Skywatching Highlights Transcript The Moon join"
+      "title": "Official NASA RSS could not be refreshed right now.",
+      "summary": "HTTP Error 429: Too Many Requests"
     }
   ]
 }
