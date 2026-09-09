@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-09-08T07:24:07.705657+00:00",
+  "generatedAt": "2026-09-09T07:32:43.716449+00:00",
   "headlines": [
     {
       "source": "NASA",
-      "title": "Official NASA RSS could not be refreshed right now.",
-      "summary": "HTTP Error 429: Too Many Requests"
+      "title": "Curiosity Blog, Sols 4995-5001: 5,000 (Martian) Days on Mars",
+      "summary": "Written by William Farrand, Senior Research Scientist, Space Science Institute Earth planning date: Friday, Aug. 28, 2026 The span of sols spanned by this blog post is noteworthy in several ways. First, Curiosity became "
+    },
+    {
+      "source": "NASA",
+      "title": "Anak Krakatau Rumbles Again",
+      "summary": "A powerful eruption from the Indonesian volcano lofted ash into the atmosphere, disrupting thousands of flights and degrading air quality."
     }
   ]
 }
